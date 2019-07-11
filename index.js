@@ -1,7 +1,9 @@
 import { resolve } from 'path';
 import { existsSync } from 'fs';
 
-import exampleRoute from './server/routes/example';
+import { createISMCluster } from './server/clusters';
+import { ElasticsearchService, PolicyService, ManagedIndexService, IndexService } from './server/services';
+import { elasticsearch, indices, policies, managedIndices } from './server/routes';
 
 export default function (kibana) {
   return new kibana.Plugin({
@@ -13,9 +15,7 @@ export default function (kibana) {
         description: 'Kibana plugin for Index Management',
         main: 'plugins/index_management_kibana/app',
       },
-      hacks: [
-        'plugins/index_management_kibana/hack'
-      ],
+      hacks: [],
       styleSheetPaths: [resolve(__dirname, 'public/app.scss'), resolve(__dirname, 'public/app.css')].find(p => existsSync(p)),
     },
 
@@ -26,8 +26,27 @@ export default function (kibana) {
     },
 
     init(server, options) { // eslint-disable-line no-unused-vars
-      // Add server routes and initialize the plugin here
-      exampleRoute(server);
+      // Create clusters
+      createISMCluster(server);
+
+      // Initialize services
+      const esDriver = server.plugins.elasticsearch;
+      // const elasticsearchService = new ElasticsearchService(esDriver);
+      const indexService = new IndexService(esDriver);
+      const policyService = new PolicyService(esDriver);
+      const managedIndexService = new ManagedIndexService(esDriver);
+      const services = {
+        // elasticsearchService,
+        indexService,
+        policyService,
+        managedIndexService,
+      };
+
+      // Add server routes
+      // elasticsearch(server, services);
+      indices(server, services);
+      policies(server, services);
+      managedIndices(server, services);
     }
   });
 }

@@ -2,10 +2,11 @@ import React from 'react';
 import { uiModules } from 'ui/modules';
 import chrome from 'ui/chrome';
 import { render, unmountComponentAtNode } from 'react-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { I18nProvider } from '@kbn/i18n/react';
 
 import 'ui/autoload/styles';
-import { Main } from './components/main';
+import Main from './pages/Main'
 
 const app = uiModules.get('apps/indexManagementKibana');
 
@@ -25,9 +26,15 @@ function RootController($scope, $element, $http) {
 
   // render react to DOM
   render(
-    <I18nProvider>
-      <Main title="index-management-kibana" httpClient={$http} />
-    </I18nProvider>,
+    <Router>
+      <Route
+        render={props => (
+          <I18nProvider>
+            <Main httpClient={$http} {...props} />
+          </I18nProvider>
+        )}
+      />
+    </Router>,
     domNode
   );
 
