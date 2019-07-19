@@ -13,9 +13,22 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import React from "react";
+import { EuiButton, EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+interface IndexActionsProps {
+  isAddDisabled: boolean;
+  onClickAdd: () => void;
+}
+
+const IndexActions: React.FC<IndexActionsProps> = ({ isAddDisabled, onClickAdd }) => (
+  <EuiFlexGroup justifyContent="spaceBetween" alignItems="center">
+    <EuiFlexItem grow={false}>
+      <EuiButton disabled={isAddDisabled} onClick={onClickAdd} data-test-subj="indexActionsAddPolicy">
+        Add policy
+      </EuiButton>
+    </EuiFlexItem>
+  </EuiFlexGroup>
+);
+
+export default IndexActions;

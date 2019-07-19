@@ -13,9 +13,13 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import { PolicyQueryParams } from "../models/interfaces";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export const DEFAULT_PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
+export const DEFAULT_QUERY_PARAMS: PolicyQueryParams = {
+  from: 0,
+  size: 20,
+  search: "",
+  sortField: "name",
+  sortDirection: "desc",
+};

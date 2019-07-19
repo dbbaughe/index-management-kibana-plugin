@@ -13,9 +13,13 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import IndexService from "../services/IndexService";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export interface BrowserServices {
+  indexService: IndexService;
+}
+
+export interface TableParams {
+  page: { index: number; size: number };
+  sort: { field: string; direction: string };
+}

@@ -13,9 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+export const PLUGIN_NAME = "index_management_kibana";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export const DEFAULT_EMPTY_DATA = "-";
+
+export const BREADCRUMBS = {
+  INDEX_MANAGEMENT: { text: "Index Management", href: "#/" },
+  INDICES: { text: "Indices", href: "#/indices" },
+};

@@ -13,4 +13,21 @@
  * permissions and limitations under the License.
  */
 
-export { Main } from './main';
+import { Actions, ManagedIndicesQueryParams } from "../models/interfaces";
+
+export const DEFAULT_PAGE_SIZE_OPTIONS = [5, 10, 20, 50];
+export const DEFAULT_QUERY_PARAMS: ManagedIndicesQueryParams = {
+  from: 0,
+  size: 20,
+  search: "",
+  sortField: "name",
+  sortDirection: "desc",
+};
+
+export const ACTIONS: Actions = {
+  rollover: "Rollover",
+  delete: "Delete",
+  transition: "Transition",
+  open: "Open",
+  close: "Close",
+};

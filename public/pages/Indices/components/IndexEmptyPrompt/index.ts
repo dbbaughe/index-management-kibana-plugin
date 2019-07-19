@@ -13,9 +13,6 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import IndexEmptyPrompt from "./IndexEmptyPrompt";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export default IndexEmptyPrompt;

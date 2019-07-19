@@ -13,9 +13,20 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+export interface ManagedIndicesQueryParams {
+  from: number;
+  size: number;
+  search: string;
+  sortField: string;
+  sortDirection: string;
+}
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export interface Actions {
+  [action: string]: string;
+
+  rollover: string;
+  delete: string;
+  open: string;
+  close: string;
+  transition: string;
+}

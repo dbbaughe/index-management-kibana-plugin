@@ -13,9 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import { createContext } from "react";
+import { BrowserServices } from "../models/interfaces";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+const ServicesContext = createContext<BrowserServices | null>(null);
+
+const ServicesConsumer = ServicesContext.Consumer;
+
+export { ServicesContext, ServicesConsumer };

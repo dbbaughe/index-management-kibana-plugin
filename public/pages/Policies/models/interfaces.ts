@@ -13,9 +13,17 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+export interface PolicyItem {
+  id: string;
+  seqNo: number;
+  primaryTerm: number;
+  policy: object; // only dumped to view as JSON as of now, don't need to type
+}
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export interface PolicyQueryParams {
+  from: number;
+  size: number;
+  search: string;
+  sortField: string;
+  sortDirection: string;
+}

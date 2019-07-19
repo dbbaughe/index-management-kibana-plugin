@@ -13,7 +13,14 @@
  * permissions and limitations under the License.
  */
 
+import { IndexService, ManagedIndexService, PolicyService } from "../services";
 import { DocumentPolicy, ManagedIndexItem } from "../../models/interfaces";
+
+export interface NodeServices {
+  indexService: IndexService;
+  managedIndexService: ManagedIndexService;
+  policyService: PolicyService;
+}
 
 export interface SearchResponse<T> {
   hits: {
@@ -59,6 +66,12 @@ export interface GetPolicyResponse extends DocumentPolicy {}
 export interface GetIndicesResponse {
   indices: CatIndex[];
   totalIndices: number;
+}
+
+export interface AddPolicyResponse {
+  updatedIndices: number;
+  failures: boolean;
+  failedIndices: string[];
 }
 
 export interface RetryParams {

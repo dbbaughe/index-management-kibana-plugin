@@ -13,9 +13,7 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import { ModalConsumer, ModalProvider } from "./Modal";
+import ModalRoot from "./ModalRoot";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export { ModalConsumer, ModalProvider, ModalRoot };

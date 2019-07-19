@@ -13,9 +13,28 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import { Legacy } from "kibana";
+import { NodeServices } from "../models/interfaces";
+import Server = Legacy.Server;
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export default function(server: Server, services: NodeServices) {
+  const { indexService } = services;
+
+  server.route({
+    path: "/api/ism/_search",
+    method: "POST",
+    handler: indexService.search,
+  });
+
+  server.route({
+    path: "/api/ism/_indices",
+    method: "GET",
+    handler: indexService.getIndices,
+  });
+
+  server.route({
+    path: "/api/ism/addPolicy",
+    method: "POST",
+    handler: indexService.addPolicy,
+  });
+}

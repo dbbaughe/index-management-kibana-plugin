@@ -13,9 +13,6 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import PolicyModal from "./PolicyModal";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export default PolicyModal;

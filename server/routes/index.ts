@@ -13,9 +13,8 @@
  * permissions and limitations under the License.
  */
 
-import browserServicesMock from "./browserServicesMock";
-import historyMock from "./historyMock";
-import httpClientMock from "./httpClientMock";
-import styleMock from "./styleMock";
+import indices from "./indices";
+import policies from "./policies";
+import managedIndices from "./managedIndices";
 
-export { browserServicesMock, historyMock, httpClientMock, styleMock };
+export { indices, policies, managedIndices };
