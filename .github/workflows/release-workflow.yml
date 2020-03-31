@@ -47,9 +47,12 @@ jobs:
           cd kibana/plugins/index-management-kibana-plugin
           yarn kbn bootstrap
       - name: Build plugin
+        id: build_zip
         run: |
           cd kibana/plugins/index-management-kibana-plugin
           yarn build
+          zip_path=`ls kibana/plugins/index-management-kibana-plugin/build/*.zip`
+          echo "::set-output name=zip_path::$zip_path"
       # AWS authentication
 #      - name: Configure AWS Credentials
 #        uses: aws-actions/configure-aws-credentials@v1
@@ -79,7 +82,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: opendistro_index_management_kibana.zip
-          asset_path: kibana/plugins/index-management-kibana-plugin/build/*.zip
+          asset_path: ${{ steps.build_zip.outputs.zip_path }}
           asset_content_type: application/zip
       - name: Upload Workflow Artifacts
         uses: actions/upload-artifact@v1
