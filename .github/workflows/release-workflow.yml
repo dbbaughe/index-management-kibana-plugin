@@ -51,7 +51,7 @@ jobs:
         run: |
           cd kibana/plugins/index-management-kibana-plugin
           yarn build
-          zip_path=`ls build/*.zip`
+          zip_path=`ls $(pwd)/build/*.zip`
           echo "::set-output name=zip_path::$zip_path"
       # AWS authentication
 #      - name: Configure AWS Credentials
