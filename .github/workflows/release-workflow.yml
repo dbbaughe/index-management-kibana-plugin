@@ -2,8 +2,6 @@ name: Release workflow
 # This workflow is triggered on creating tags to master or an opendistro release branch
 on:
   push:
-    branches:
-      - master
     tags:
       - 'v*'
 
@@ -64,16 +62,16 @@ jobs:
 #          s3_path=s3://artifacts.opendistroforelasticsearch.amazon.com/downloads
 #          aws s3 cp index-management-artifact/*.zip $s3_path/kibana-plugins/opendistro-index-management/
 #          aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths '/downloads/*'
-#      - name: Create Github Draft Release
-#        id: create_release
-#        uses: actions/create-release@v1.0.0
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          tag_name: ${{ github.ref }}
-#          release_name: Release ${{ github.ref }}
-#          draft: true
-#          prerelease: false
+      - name: Create Github Draft Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: false
 #      - name: Upload Release Asset
 #        uses: actions/upload-release-asset@v1.0.1
 #        env:
